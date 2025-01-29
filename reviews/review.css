@@ -72,3 +72,82 @@
 .cta-button.secondary {
     background: #666;
 }
+
+.social-share {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 10px;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.share-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.share-button.twitter { background: #1DA1F2; }
+.share-button.facebook { background: #4267B2; }
+.share-button.reddit { background: #FF4500; }
+
+.specs-table {
+    margin: 30px 0;
+}
+
+.specs-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.specs-table th, .specs-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.specs-table th {
+    width: 30%;
+    color: #666;
+}
+
+.user-reviews {
+    margin: 40px 0;
+}
+
+.user-review-form {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
