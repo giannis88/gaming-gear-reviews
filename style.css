@@ -237,3 +237,27 @@ article {
 .read-more:hover {
     text-decoration: underline;
 }
+
+.newsletter {
+    background: linear-gradient(45deg, #2c3e50, #3498db);
+    color: white;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 40px 0;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
