@@ -123,6 +123,64 @@ function initComparison() {
     });
 }
 
+// Search functionality
+function initSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+
+    if (!searchInput || !searchButton) return;
+
+    // Build the index
+    const index = lunr(function () {
+        this.ref('id');
+        this.field('title');
+        this.field('content');
+
+        // Add data to the index (example data)
+        const documents = [
+            { id: 'logitech-g-pro', title: 'Logitech G Pro X Superlight Review', content: 'Ultra-lightweight gaming mouse that doesnt compromise on performance' },
+            { id: 'razer-deathadder-v3', title: 'Razer DeathAdder V3 Review', content: 'Ergonomic gaming mouse with a high-precision sensor' },
+            { id: 'ducky-one-3', title: 'Ducky One 3 Review', content: 'Mechanical keyboard with hot-swappable switches and RGB lighting' },
+            // Add more documents here
+        ];
+
+        documents.forEach(function (doc) {
+            this.add(doc);
+        }, this);
+    });
+
+    // Perform the search
+    searchButton.addEventListener('click', () => {
+        const searchTerm = searchInput.value;
+        const results = index.search(searchTerm);
+
+        // Display the results
+        displaySearchResults(results, documents);
+    });
+}
+
+// Display search results
+function displaySearchResults(results, documents) {
+    const resultsContainer = document.createElement('div');
+    resultsContainer.className = 'search-results';
+    document.body.appendChild(resultsContainer); // Append to body for now, you might want to make this more specific
+
+    if (results.length === 0) {
+        resultsContainer.innerHTML = '<p>No results found.</p>';
+        return;
+    }
+
+    const ul = document.createElement('ul');
+    results.forEach(result => {
+        const doc = documents.find(d => d.id === result.ref);
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="/${doc.id}.html">${doc.title}</a>`;
+        ul.appendChild(li);
+    });
+
+    resultsContainer.appendChild(ul);
+}
+
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
     initDarkMode();
@@ -130,4 +188,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initSocialShare();
     initPriceHistory();
     initComparison();
+    initSearch();
 });
