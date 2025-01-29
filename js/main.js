@@ -19,6 +19,18 @@ function initDarkMode() {
     setDarkMode(savedMode ? JSON.parse(savedMode) : prefersDark.matches);
 }
 
+// Mock API endpoint for form submissions
+async function submitForm(formData) {
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Log form data to console
+    console.log('Form data submitted:', formData);
+
+    // Return a success response
+    return { success: true, message: 'Form submitted successfully!' };
+}
+
 // Form handling
 function initForms() {
     const reviewForm = document.getElementById('reviewForm');
@@ -30,10 +42,16 @@ function initForms() {
             const rating = document.getElementById('rating').value;
             const review = document.getElementById('review').value;
             
-            // Here you would typically send to a backend
-            console.log('Review submitted:', { rating, review });
-            alert('Thank you for your review!');
-            reviewForm.reset();
+            // Submit form data to mock API
+            const formData = { rating, review };
+            const response = await submitForm(formData);
+
+            if (response.success) {
+                alert(response.message);
+                reviewForm.reset();
+            } else {
+                alert('Form submission failed. Please try again.');
+            }
         });
     }
 
@@ -42,10 +60,16 @@ function initForms() {
             e.preventDefault();
             const email = newsletterForm.querySelector('input[type="email"]').value;
             
-            // Here you would typically send to a newsletter service
-            console.log('Newsletter signup:', email);
-            alert('Thanks for subscribing!');
-            newsletterForm.reset();
+            // Submit form data to mock API
+            const formData = { email };
+            const response = await submitForm(formData);
+
+            if (response.success) {
+                alert(response.message);
+                newsletterForm.reset();
+            } else {
+                alert('Form submission failed. Please try again.');
+            }
         });
     }
 }
@@ -127,6 +151,7 @@ function initComparison() {
 function initSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
+    const searchResults = document.getElementById('searchResults');
 
     if (!searchInput || !searchButton) return;
 
@@ -155,18 +180,18 @@ function initSearch() {
         const results = index.search(searchTerm);
 
         // Display the results
-        displaySearchResults(results, documents);
+        displaySearchResults(results, documents, searchResults);
     });
 }
 
 // Display search results
-function displaySearchResults(results, documents) {
-    const resultsContainer = document.createElement('div');
-    resultsContainer.className = 'search-results';
-    document.body.appendChild(resultsContainer); // Append to body for now, you might want to make this more specific
+function displaySearchResults(results, documents, resultsContainer) {
+    resultsContainer.innerHTML = ''; // Clear previous results
 
     if (results.length === 0) {
-        resultsContainer.innerHTML = '<p>No results found.</p>';
+        const noResultsMessage = document.createElement('p');
+        noResultsMessage.textContent = 'No results found.';
+        resultsContainer.appendChild(noResultsMessage);
         return;
     }
 
@@ -174,7 +199,10 @@ function displaySearchResults(results, documents) {
     results.forEach(result => {
         const doc = documents.find(d => d.id === result.ref);
         const li = document.createElement('li');
-        li.innerHTML = `<a href="/${doc.id}.html">${doc.title}</a>`;
+        const link = document.createElement('a');
+        link.href = `/${doc.id}.html`;
+        link.textContent = doc.title;
+        li.appendChild(link);
         ul.appendChild(li);
     });
 
