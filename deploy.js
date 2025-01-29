@@ -44,7 +44,7 @@ const deploy = async () => {
             // Fallback to a different image source if needed
         }
 
-        // Initialize git with user config
+        // Initialize git repository
         execSync('git init');
         execSync('git add .');
         execSync('git config user.name "Gaming Gear Reviews"');
