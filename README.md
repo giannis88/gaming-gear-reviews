@@ -1,7 +1,17 @@
-
 # Gaming Gear Reviews
 
-Amazon affiliate website reviewing gaming peripherals and equipment.
+A website dedicated to reviewing gaming peripherals and equipment. Find the best gaming gear recommendations and honest reviews.
+
+## Website
+
+Visit our website to see the latest gaming gear reviews and recommendations.
+
+## Features
+
+- Gaming mice reviews
+- Keyboard recommendations
+- Headset comparisons
+- Setup guides
 
 ## Development
 
