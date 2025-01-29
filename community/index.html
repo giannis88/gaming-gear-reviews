@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Hub | Gaming Gear Reviews</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="community.css">
+    <script src="../js/main.js" defer></script>
+    <script src="../js/community.js" defer></script>
+</head>
+<body>
+    <!-- ...copy header from index.html... -->
+    <main class="community-page">
+        <div class="community-header">
+            <h1>Community Hub</h1>
+            <button class="cta-button" id="createPost">Create Post</button>
+        </div>
+
+        <div class="community-grid">
+            <section class="forum-section">
+                <h2>Recent Discussions</h2>
+                <div class="forum-posts" id="forumPosts">
+                    <!-- Posts will be loaded dynamically -->
+                </div>
+            </section>
+
+            <section class="showcase-section">
+                <h2>Setup Showcase</h2>
+                <div class="setup-grid" id="setupGrid">
+                    <!-- Setups will be loaded dynamically -->
+                </div>
+            </section>
+        </div>
+
+        <dialog id="postModal" class="modal">
+            <form id="postForm" class="post-form">
+                <h3>Create New Post</h3>
+                <div class="form-group">
+                    <label for="postTitle">Title</label>
+                    <input type="text" id="postTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="postContent">Content</label>
+                    <textarea id="postContent" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="secondary" id="cancelPost">Cancel</button>
+                    <button type="submit" class="cta-button">Post</button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+    <!-- ...copy footer from index.html... -->
+</body>
+</html>

@@ -71,6 +71,31 @@
                     </table>
                 </div>
 
+                <div class="price-history">
+                    <h3>Price History</h3>
+                    <canvas id="priceChart"></canvas>
+                    <p class="price-alert">
+                        <button class="alert-button">Set Price Alert</button>
+                        Lowest price: $129.99 on May 2024
+                    </p>
+                </div>
+
+                <div class="comparison-section">
+                    <h3>Compare With</h3>
+                    <div class="comparison-grid">
+                        <div class="compare-card" data-product="razer-viper">
+                            <img src="https://placehold.co/100x100" alt="Razer Viper Ultimate">
+                            <h4>Razer Viper Ultimate</h4>
+                            <button class="compare-button" data-product="razer-viper">Compare</button>
+                        </div>
+                        <div class="compare-card" data-product="zowie-ec2">
+                            <img src="https://placehold.co/100x100" alt="Zowie EC2">
+                            <h4>Zowie EC2</h4>
+                            <button class="compare-button" data-product="zowie-ec2">Compare</button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="user-reviews">
                     <h3>User Reviews</h3>
                     <div class="user-review-form">
@@ -105,5 +130,6 @@
     <footer>
         <!-- Copy existing footer from index.html -->
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

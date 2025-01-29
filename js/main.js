@@ -72,9 +72,62 @@ function initSocialShare() {
     });
 }
 
+// Price history chart
+function initPriceHistory() {
+    const priceChart = document.getElementById('priceChart');
+    if (!priceChart) return;
+
+    const ctx = priceChart.getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Price History',
+                data: [149.99, 149.99, 139.99, 149.99, 129.99, 149.99],
+                borderColor: '#f90',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: '6-Month Price History'
+                }
+            }
+        }
+    });
+}
+
+// Product comparison
+function initComparison() {
+    const compareButtons = document.querySelectorAll('.compare-button');
+    const comparisonList = new Set();
+
+    compareButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productId = button.dataset.product;
+            if (comparisonList.has(productId)) {
+                comparisonList.delete(productId);
+                button.classList.remove('active');
+            } else if (comparisonList.size < 3) {
+                comparisonList.add(productId);
+                button.classList.add('active');
+            } else {
+                alert('You can compare up to 3 products at a time');
+            }
+            updateComparisonUI();
+        });
+    });
+}
+
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
     initDarkMode();
     initForms();
     initSocialShare();
+    initPriceHistory();
+    initComparison();
 });
